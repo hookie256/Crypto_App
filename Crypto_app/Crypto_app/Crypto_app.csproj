@@ -57,6 +57,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaHoaCoDien\Affine.cs" />
     <Compile Include="MaHoaCoDien\frmAffine.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +76,7 @@
     <Compile Include="MaHoaCoDien\frmHill.Designer.cs">
       <DependentUpon>frmHill.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaHoaHienDai\DES.cs" />
     <Compile Include="MaHoaHienDai\frmDES.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,8 +94,17 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MaHoaCoDien\frmAffine.resx">
+      <DependentUpon>frmAffine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaHoaCoDien\frmHill.resx">
       <DependentUpon>frmHill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaHoaHienDai\frmDES.resx">
+      <DependentUpon>frmDES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaHoaHienDai\frmRSA.resx">
+      <DependentUpon>frmRSA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
