@@ -38,8 +38,16 @@ namespace Crypto_app.MaHoaCoDien
                     txtAffineKeyA.Text = "";
                     txtAffineKeyB.Text = "";
                 }
+                //Table để show từng bước
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Bản rõ", typeof(char));
+                dt.Columns.Add("X", typeof(int));
+                dt.Columns.Add("(ax+b)mod26", typeof(int));
+                dt.Columns.Add("Bản mã", typeof(char));
 
-                txtAffineOutput.Text = Affine.Mahoa(txtAffineInput.Text, keya, keyb);
+                txtAffineOutput.Text = Affine.Mahoa(txtAffineInput.Text, keya, keyb, dt);
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = dt;
 
             }
             catch (Exception)
@@ -71,8 +79,15 @@ namespace Crypto_app.MaHoaCoDien
                     txtAffineKeyA.Text = "";
                     txtAffineKeyB.Text = "";
                 }
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Bản mã", typeof(char));
+                dt.Columns.Add("X", typeof(int));
+                dt.Columns.Add("a^-1*(x-b)mod26", typeof(int));
+                dt.Columns.Add("Bản rõ", typeof(char));
 
-                txtAffineOutput.Text = Affine.Giaima(txtAffineInput.Text, keya, keyb);
+                txtAffineOutput.Text = Affine.Giaima(txtAffineInput.Text, keya, keyb, dt);
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = dt;
 
             }
             catch (Exception)

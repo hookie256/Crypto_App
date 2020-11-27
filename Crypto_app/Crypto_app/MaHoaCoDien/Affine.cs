@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Crypto_app.MaHoaCoDien
 {
@@ -50,7 +51,7 @@ namespace Crypto_app.MaHoaCoDien
         }
 
 
-        public static string Mahoa(string s, int a, int b) //Thuật toán mã hóa Affine
+        public static string Mahoa(string s, int a, int b, DataTable dt) //Thuật toán mã hóa Affine
         {
             char[] banro = s.ToCharArray();
             int maso = 0;
@@ -66,7 +67,7 @@ namespace Crypto_app.MaHoaCoDien
                         roso[j] = i;
                         maso = (roso[j] * a + b) % P.Length;
                         temp[j] = P[maso];
-
+                        dt.Rows.Add(banro[j], roso[j], maso, temp[j]);
                     }
                 }
             }
@@ -76,7 +77,7 @@ namespace Crypto_app.MaHoaCoDien
         }
 
 
-        public static string Giaima(string s, int a, int b) //Thuật toán giải mã Affine
+        public static string Giaima(string s, int a, int b, DataTable dt) //Thuật toán giải mã Affine
         {
             char[] banma = s.ToCharArray();
             int maso = 0;
@@ -93,6 +94,7 @@ namespace Crypto_app.MaHoaCoDien
                         roso[j] = i;
                         maso = ((k + P.Length) * (roso[j] - b + P.Length)) % P.Length;
                         temp[j] = P[maso];
+                        dt.Rows.Add(banma[j], roso[j], maso, temp[j]);
                     }
                 }
             }
