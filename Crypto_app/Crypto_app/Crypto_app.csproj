@@ -76,6 +76,7 @@
     <Compile Include="MaHoaCoDien\frmHill.Designer.cs">
       <DependentUpon>frmHill.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaHoaCoDien\Hill.cs" />
     <Compile Include="MaHoaHienDai\DES.cs" />
     <Compile Include="MaHoaHienDai\frmDES.cs">
       <SubType>UserControl</SubType>
