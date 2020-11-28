@@ -37,7 +37,7 @@ namespace Crypto_app.MaHoaCoDien
                 foreach (DataGridViewColumn col in dgv.Columns)
                 {
                     int a;
-                    if (int.TryParse((string)dgv.Rows[row.Index].Cells[col.Index].Value, out a))
+                    if (int.TryParse(dgv.Rows[row.Index].Cells[col.Index].Value.ToString(), out a))
                     {
                         arr[row.Index, col.Index] = a;
                     }
