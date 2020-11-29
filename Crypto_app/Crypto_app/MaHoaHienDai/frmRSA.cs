@@ -63,6 +63,12 @@ namespace Crypto_app.MaHoaHienDai
                 }
 
             }
+            txtRSA.Text = "-----------QUÁ TRÌNH SINH KHOÁ-----------\r\n";
+            txtRSA.Text += "\r\nBước 1: N = P * Q = " + P.ToString() + " * " + Q.ToString() + " = " + N.ToString();
+            txtRSA.Text += "\r\nBước 2: phi = (P - 1) * (Q - 1) = " + "(" + P.ToString() + " - 1)" + " * " + "(" + Q.ToString() + " - 1) = " + phi.ToString();
+            txtRSA.Text += "\r\nBước 3: Chọn E để gcd(E,phi) = 1 & 1 < E <phi";
+            txtRSA.Text += "\r\n\t\t=> Chọn E = " + E.ToString();
+            txtRSA.Text += "\r\nBước 3: D = (E^-1) mod (phi) = " + D.ToString() + "\r\n\r\n";
 
             txtRSAKeyPublic.Text = E.ToString();
             txtRSAKeyPrivate.Text = D.ToString();
@@ -74,6 +80,7 @@ namespace Crypto_app.MaHoaHienDai
             int Q = Convert.ToInt32(txtRSAQ.Text);
 
             txtRSAOutput.Text = modulo(Convert.ToInt32(txtRSAInput.Text), Convert.ToInt32(txtRSAKeyPublic.Text), P * Q).ToString();
+            txtRSA.Text += "\r\nMã hoá: C = P^E mod (N) = " + txtRSAInput.Text + "^" + txtRSAKeyPublic.Text + " mod (" + (P * Q).ToString() + ") = " + txtRSAOutput.Text + "\r\n";
         }
         int modulo(int a, int n, int m)
         {
@@ -91,7 +98,13 @@ namespace Crypto_app.MaHoaHienDai
 
             int output = modulo(Convert.ToInt32(txtRSAInput.Text), Convert.ToInt32(txtRSAKeyPrivate.Text), P * Q);
             txtRSAOutput.Text = output.ToString();
+
+            txtRSA.Text += "\r\nGiải mã: P = C^D mod (N) = " + txtRSAInput.Text + "^" + txtRSAKeyPrivate.Text + " mod (" + (P * Q).ToString() + ") = " + txtRSAOutput.Text + "\r\n";
         }
-    
+
+        private void btnRSA_Click(object sender, EventArgs e)
+        {
+            txtRSA.Text = "";
+        }
     }
 }
