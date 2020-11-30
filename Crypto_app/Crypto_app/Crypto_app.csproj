@@ -98,6 +98,9 @@
     <EmbeddedResource Include="MaHoaCoDien\frmAffine.resx">
       <DependentUpon>frmAffine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MaHoaCoDien\frmBase64.resx">
+      <DependentUpon>frmBase64.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MaHoaCoDien\frmHill.resx">
       <DependentUpon>frmHill.cs</DependentUpon>
     </EmbeddedResource>
