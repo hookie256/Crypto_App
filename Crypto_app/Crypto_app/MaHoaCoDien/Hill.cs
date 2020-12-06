@@ -191,11 +191,11 @@ namespace Crypto_app.MaHoaCoDien
 
                     // Interchanging rows and columns to get the 
                     // transpose of the cofactor matrix
-                    adj[j, i] = sign * (DinhThuc(temp, n - 1));
-                    if (adj[j, i] < 0)
-                        adj[j, i] = 26 + adj[j, i] % 26;
+                    adj[j, i] = sign * (DinhThuc(temp, n - 1)) % 26;
+                    while(adj[j, i] < 0)
+                        adj[j, i] = 26 + adj[j, i];
 
-                }
+                } 
             }
         }
         public int DongDu(int a, int m)
@@ -206,13 +206,31 @@ namespace Crypto_app.MaHoaCoDien
                     return x;
             return 1;
         }
+        public int USCLN(int a, int b) //Tinh uoc so chung lon nhat
+        {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+            if (a == 0 || b == 0)
+                return a + b;
+            while (a != b)
+            {
+                if (a > b)
+                    a = a - b;
+                else
+                    b = b - a;
+            }
+            return a;
+        }
         //tính ma trận nghịch đảo
         public bool inverse(int[,] A, int[,] inverse)
         {
             // Find DinhThuc of [,]A 
             int det = DinhThuc(A, n);
-            if (det == 0)
-            {
+            while (det < 0)
+                det += 26;
+            int DET = DongDu(det, 26);
+            if (USCLN(det,26)!=1)
+            {               
                 Console.Write("Singular matrix, can't find its inverse");
                 return false;
             }
@@ -224,7 +242,7 @@ namespace Crypto_app.MaHoaCoDien
             // Find Inverse using formula "inverse(A) = adj(A)/det(A)" 
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
-                    inverse[i, j] = adj[i, j] * DongDu(det, 26);
+                    inverse[i, j] = (adj[i, j] * DET)%26;
 
             return true;
         }
